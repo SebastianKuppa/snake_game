@@ -1,4 +1,5 @@
 from enum import Enum
+import pygame
 
 
 class Direction(Enum):
@@ -24,3 +25,6 @@ class Snake:
         self.body = [(20, 20), (20, 40), (20, 60)]
         self.direction = Direction.DOWN
 
+    def draw(self, game: pygame, window):
+        for block in self.body:
+            game.draw.rect(window, self.color, (block[0], block[1], self.block_size, self.block_size))

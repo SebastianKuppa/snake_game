@@ -1,3 +1,4 @@
+import snake
 import pygame
 
 
