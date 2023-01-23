@@ -5,7 +5,7 @@ import pygame
 bounds = (300, 300)
 block_size = 20
 run = True
-game_speed = 100  # in ms
+game_speed = 3000  # in ms
 
 if __name__ == '__main__':
     pygame.init()
@@ -18,7 +18,9 @@ if __name__ == '__main__':
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-            window.fill(color=(0, 0, 0))
+
+            snake.move()
+            # window.fill(color=(0, 0, 0))
             snake.draw(pygame, window)
             pygame.display.flip()
 

@@ -11,7 +11,7 @@ class Direction(Enum):
 
 class Snake:
     length = None
-    direction = None
+    direction = Direction.DOWN
     body = None
     color = (0, 0, 255)
 
@@ -25,7 +25,7 @@ class Snake:
         self.body = [(20, 20), (20, 40), (20, 60)]
         self.direction = Direction.DOWN
 
-    def draw(self, game: pygame, window):
+    def draw(self, game, window):
         for block in self.body:
             game.draw.rect(window, self.color, (block[0], block[1], self.block_size, self.block_size))
 
