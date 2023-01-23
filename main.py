@@ -1,11 +1,12 @@
 from snake import Snake
 import pygame
+import time
 
 # game params
 bounds = (300, 300)
 block_size = 20
 run = True
-game_speed = 10  # in ms
+game_speed = 100  # in ms
 
 if __name__ == '__main__':
     pygame.init()
@@ -16,12 +17,13 @@ if __name__ == '__main__':
     # gaming loop
     while run:
         pygame.time.delay(game_speed)
+        # time.sleep(3)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
 
-            snake.move()
-            window.fill(color=(0, 0, 0))
-            snake.draw(pygame, window)
-            pygame.display.update()
-            clock.tick(1)
+        snake.move()
+        window.fill(color=(0, 0, 0))
+        snake.draw(pygame, window)
+        pygame.display.update()
+        clock.tick(40)
