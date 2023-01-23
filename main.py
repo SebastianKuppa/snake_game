@@ -1,4 +1,4 @@
-from snake import Snake
+from snake import Snake, Direction
 import pygame
 
 # game params
@@ -22,10 +22,22 @@ if __name__ == '__main__':
     while run:
         # how fast to update the game screen
         pygame.time.delay(game_speed)
+
         # closing the window in the top right corner will stop the loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+
+        # check which keyboard keys were pressed
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            snake.steer(Direction.LEFT)
+        elif keys[pygame.K_RIGHT]:
+            snake.steer(Direction.RIGHT)
+        elif keys[pygame.K_UP]:
+            snake.steer(Direction.UP)
+        elif keys[pygame.K_DOWN]:
+            snake.steer(Direction.DOWN)
         # new snake position/length is calculated
         snake.move()
         # clear game window to black
