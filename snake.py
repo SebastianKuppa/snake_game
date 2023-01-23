@@ -28,3 +28,21 @@ class Snake:
     def draw(self, game: pygame, window):
         for block in self.body:
             game.draw.rect(window, self.color, (block[0], block[1], self.block_size, self.block_size))
+
+    def move(self):
+        curr_block = self.body[-1]
+        if self.direction == Direction.DOWN:
+            next_head = (curr_block[0], curr_block[1] + self.block_size)
+            self.body.append(next_head)
+        elif self.direction == Direction.UP:
+            next_head = (curr_block[0], curr_block[1] - self.block_size)
+            self.body.append(next_head)
+        elif self.direction == Direction.RIGHT:
+            next_head = (curr_block[0] + self.block_size, curr_block[1])
+            self.body.append(next_head)
+        elif self.direction == Direction.RIGHT:
+            next_head = (curr_block[0] - self.block_size, curr_block[1])
+            self.body.append(next_head)
+
+        if self.length < len(self.body):
+            self.body.pop(0)
