@@ -1,12 +1,11 @@
 from snake import Snake
 import pygame
-import time
 
 # game params
-bounds = (300, 300)
-block_size = 20
+bounds = (300, 300)  # window size
+block_size = 20  # size of each snake subpart
 run = True
-game_speed = 100  # in ms
+game_speed = 100  # loop delay in ms
 
 if __name__ == '__main__':
     # start mygame instance
@@ -33,7 +32,6 @@ if __name__ == '__main__':
         window.fill(color=(0, 0, 0))
         # draw the new snake, after move() method was called
         snake.draw(pygame, window)
-        # update window
         # update window
         pygame.display.update()
         clock.tick(40)

@@ -46,3 +46,13 @@ class Snake:
 
         if self.length < len(self.body):
             self.body.pop(0)
+
+    def steer(self, direction: Direction):
+        if self.direction == Direction.DOWN and direction != Direction.UP:
+            self.direction = direction
+        elif self.direction == Direction.UP and direction != Direction.DOWN:
+            self.direction = direction
+        elif self.direction == Direction.RIGHT and direction != Direction.LEFT:
+            self.direction = direction
+        elif self.direction == Direction.LEFT and direction != Direction.RIGHT:
+            self.direction = direction
