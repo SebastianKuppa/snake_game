@@ -45,6 +45,8 @@ if __name__ == '__main__':
             snake.steer(Direction.DOWN)
         # new snake position/length is calculated
         snake.move()
+        # check for food collision
+        snake.check_for_food(food)
         # clear game window to black
         window.fill(color=(0, 0, 0))
         # draw the new snake, after move() method was called

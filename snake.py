@@ -56,3 +56,12 @@ class Snake:
             self.direction = direction
         elif self.direction == Direction.LEFT and direction != Direction.RIGHT:
             self.direction = direction
+
+    def eat(self):
+        self.length += 1
+
+    def check_for_food(self, food):
+        head_block = self.body[-1]
+        if head_block[0] == food.x and head_block[1] == food.y:
+            self.eat()
+            food.respawn()
