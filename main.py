@@ -1,5 +1,8 @@
 from snake import Snake, Direction
+from food import Food
+
 import pygame
+
 
 # game params
 bounds = (300, 300)  # window size
@@ -16,6 +19,8 @@ if __name__ == '__main__':
     pygame.display.set_caption('SNAKE')
     # init Snake object
     snake = Snake(block_size=block_size, bounds=bounds)
+    # init food object
+    food = Food(block_size, bounds)
     # add clock object for window update
     clock = pygame.time.Clock()
     # start gaming loop
@@ -44,6 +49,8 @@ if __name__ == '__main__':
         window.fill(color=(0, 0, 0))
         # draw the new snake, after move() method was called
         snake.draw(pygame, window)
+        # draw food block
+        food.draw(pygame, window)
         # update window
         pygame.display.update()
         clock.tick(40)
