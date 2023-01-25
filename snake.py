@@ -65,3 +65,13 @@ class Snake:
         if head_block[0] == food.x and head_block[1] == food.y:
             self.eat()
             food.respawn()
+
+    def check_tail_collision(self):
+        head_block = self.body[-1]
+        collision = False
+        for i in range(len(self.body) - 1):
+            curr_snake_block = self.body[i]
+            if head_block[0] == curr_snake_block[0] and head_block[1] == curr_snake_block[1]:
+                collision = True
+
+        return collision
