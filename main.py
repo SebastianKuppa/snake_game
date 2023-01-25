@@ -5,7 +5,7 @@ import pygame
 
 
 # game params
-bounds = (300, 300)  # window size
+bounds = (500, 500)  # window size
 block_size = 20  # size of each snake subpart
 run = True
 game_speed = 100  # loop delay in ms
@@ -21,6 +21,8 @@ if __name__ == '__main__':
     snake = Snake(block_size=block_size, bounds=bounds)
     # init food object
     food = Food(block_size, bounds)
+    # adding font object for game over message
+    font = pygame.font.SysFont('comicsans', 60, True)
     # add clock object for window update
     clock = pygame.time.Clock()
     # start gaming loop
@@ -45,11 +47,16 @@ if __name__ == '__main__':
             snake.steer(Direction.DOWN)
         # new snake position/length is calculated
         snake.move()
-        # check for head and body collision
-        if snake.check_tail_collision() or snake.check_bounds():
-            run = False
         # check for food collision
         snake.check_for_food(food)
+        # check for head and body collision
+        if snake.check_tail_collision() or snake.check_bounds():
+            text = font.render('Game Over', True, (255, 255, 255))
+            window.blit(text, (80, 200))
+            pygame.display.update()
+            pygame.time.delay(1000)
+            snake.respawn()
+            food.respawn()
         # clear game window to black
         window.fill(color=(0, 0, 0))
         # draw the new snake, after move() method was called
