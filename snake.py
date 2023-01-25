@@ -75,3 +75,13 @@ class Snake:
                 collision = True
 
         return collision
+
+    def check_bounds(self):
+        head_block = self.body[-1]
+        if head_block[0] >= self.bounds[0] or head_block[1] >= self.bounds[1]:
+            return True
+        elif head_block[0] < 0 or head_block[1] < 0:
+            return True
+
+        return False
+

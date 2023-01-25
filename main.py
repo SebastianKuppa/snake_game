@@ -45,6 +45,9 @@ if __name__ == '__main__':
             snake.steer(Direction.DOWN)
         # new snake position/length is calculated
         snake.move()
+        # check for head and body collision
+        if snake.check_tail_collision() or snake.check_bounds():
+            run = False
         # check for food collision
         snake.check_for_food(food)
         # clear game window to black
